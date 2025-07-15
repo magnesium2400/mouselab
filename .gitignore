@@ -1,0 +1,9 @@
+__pycache__/
+.ipynb_checkpoints/
+scrap/
+voxel_model/
+*25.nrrd
+*10.nrrd
+connectivity/*.h5
+annotation/**/*.nrrd
+

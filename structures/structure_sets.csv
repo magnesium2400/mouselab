@@ -1,0 +1,34 @@
+,description,id,name
+0,List of structures in Isocortex layer 5,667481446,Isocortex layer 5
+1,List of structures in Isocortex layer 6b,667481450,Isocortex layer 6b
+2,Summary structures of the cerebellum,688152368,Cerebellum
+3,List of structures for ABA Differential Search,12,ABA - Differential Search
+4,List of valid structures for projection target search,184527634,Mouse Connectivity - Target Search
+5,Structures whose surfaces are represented by a precomputed mesh,691663206,Mouse Brain - Has Surface Mesh
+6,Summary structures of the midbrain,688152365,Midbrain
+7,Summary structures of the medulla,688152367,Medulla
+8,Summary structures of the striatum,688152361,Striatum
+9,Structures representing subdivisions of the mouse brain,687527945,Mouse Connectivity - Summary
+10,Summary structures of the hippocampal formation,688152359,Hippocampal Formation
+11,List of visual cortex structures targeted for visual coding experiments,514166994,Allen Brain Observatory targeted structure set
+12,Summary structures of the olfactory areas,688152358,Olfactory Areas
+13,Curated list of non-overlapping substructures at a mid-ontology level,167587189,Brain – Summary Structures
+14,List of structures in Isocortex layer 4,667481445,Isocortex layer 4
+15,Structures representing the major divisions of the mouse brain,687527670,Brain - Major Divisions
+16,Summary structures of the pallidum,688152362,Pallidum
+17,List of Primary injection structures for BDA/AAV injection structure search,114512892,Mouse Connectivity - BDA/AAV Primary Injection Structures
+18,List of primary AND secondary injection structures for BDA/AAV injection structure search,112905813,Mouse Connectivity - BDA/AAV All Injection Structures
+19,List of structures for ABA Fine Structure Search,10,ABA - Fine Structure Search
+20,List of primary AND secondary injection structures for Projection injection structure search,112905828,Mouse Connectivity - Projection All Injection Structures
+21,List of structures in Isocortex layer 6a,667481449,Isocortex layer 6a
+22,List of structures representing a areal level summary,3,Mouse - Areas
+23,List of structures in Isocortex layer 1,667481440,Isocortex layer 1
+24,Summary structures of the hypothalamus,688152364,Hypothalamus
+25,List of structures in Isocortex layer 2/3,667481441,Isocortex layer 2/3
+26,All mouse visual areas with layers,396673091,Mouse Cell Types - Structures
+27,Summary structures of the cortical subplate,688152360,Cortical Subplate
+28,Summary structures of the thalamus,688152363,Thalamus
+29,List of structures representing a coarse level summary,2,Mouse - Coarse
+30,Summary structures of the isocortex,688152357,Isocortex
+31,List of Primary injection structures for Projection injection structure search,114512891,Mouse Connectivity - Projection Primary Injection Structures
+32,Summary structures of the pons,688152366,Pons
