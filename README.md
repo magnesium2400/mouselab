@@ -1,11 +1,18 @@
 # `mouselab` - package for interacting with Allen Mouse Brain Connectivity Data with MATLAB
 
-## Installation
-- Install python environment using `conda` and `environment.yaml`. This includes installation of both `allensdk` (needed for doanloading volumetric masks at various resolutions) and `mcmodels` (for accessing the actual connectomic data). 
+## I want to get started!
+- Clone/download this directory
+- Install the python environment using `conda` and `environment.yaml`
+  - This will install both `allensdk` (needed for doanloading volumetric masks at various resolutions) and `mcmodels` (for accessing the actual connectomic data). 
   - `allensdk` documentation can be found [here](https://allensdk.readthedocs.io/en/latest/) and code [here](https://github.com/AllenInstitute/AllenSDK)
   - `mcmodels` documentation can be found [here](https://mouse-connectivity-models.readthedocs.io/en/latest/index.html) and code [here](https://github.com/AllenInstitute/mouse_connectivity_models)
-
-- MATLAB functions require [nihelp](https://github.com/magnesium2400/nihelp). This can be downloaded/cloned and added to MATLAB path.
+- Open the `conda` environment and run `import mouselab; mouselab.download_common_data` (this should run without any errors).
+  - This will take ~5 mins but only needs to be done once. It will populate the directories in the repo with the most commonly used AIBS data. 
+  - Have a look at `mouselab.py` and the `IPython` notebooks (`masks`, `connectivity`, `structures`) for examples of the (simple) python functionality for downloading the data.
+- Now we can get started doing visualisations in MATLAB! Add the `matlab` and `tests` directories of this repo to your MATLAB path. This repo also requires [nihelp](https://github.com/magnesium2400/nihelp) - please clone/download and add to your MATLAB path.
+	- Run `test_commonData` from the MATLAB Command Editor (this should run without any errors). Then try `test_simpleVisualisation`. 
+	- Then run `plotAllenSlice();` and `layoutAllenSlices();`. Then try `layoutAllenSlices_test();` and `layoutCcfAnnotations_test();`.
+	- Then, you can import your own volumetric data (in CCF format) and run `plotCcfAnnotation(myData);` and `layoutCcfAnnotations(myData);` and you are good to go!
 
 
 ## Information about AIBS data
@@ -59,14 +66,14 @@
   - 73: Ventricular system
 
 
-## Python Usage
+## Python Information
 - For a gentle introduction to the Allen API, explore the notebooks in the following order: 
   1. `structures.ipynb`
   2. `masks.ipynb`
   3. `connectivity.ipynb`
 
 
-## MATLAB Usage
+## MATLAB Information
 
 
 
