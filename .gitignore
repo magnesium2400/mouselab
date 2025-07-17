@@ -5,5 +5,5 @@ voxel_model/
 *25.nrrd
 *10.nrrd
 connectivity/*.h5
-annotation/**/*.nrrd
+annotation/**/structure_masks/**/*.nrrd
 

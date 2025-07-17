@@ -17,7 +17,7 @@
 
 ## Information about AIBS data
 - This package focuses on the ccf_2017 release. It is not the most recent (e.g. 2022 is available) but it is the most comprehensive. 
-- All the data are available from [here](https://download.alleninstitute.org/informatics-archive/current-release/mouse_ccf/annotation/ccf_2017/). The python API is used to interact with (download and index) the data from here. 
+- All the data are available from [here](https://download.alleninstitute.org/informatics-archive/current-release/mouse_ccf/). The python API is used to interact with (download and index) the data from here. 
 
 ### Structures and structure sets
 - AIBS has split up the mouse brain into ~1000 individual structures. This is somewhat hierarchical: structures can be recursively split into other structures
