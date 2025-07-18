@@ -1,4 +1,4 @@
-function [out, V] = layoutAllenSlices(varargin)
+function [fig, tl, ax, V] = layoutAllenSlices(varargin)
 
 % all this needs to do is convert the volume to a true colour image and
 % then call `plotMouseAnnotation`. the true colour image will be a 4D image
@@ -9,7 +9,7 @@ function [out, V] = layoutAllenSlices(varargin)
 ip = inputParser;
 
 % Copy the order of plotMouseAnnotation
-ip.addOptional('type', 'average_template', @(x) ismember(x, ["annotation", "average_template", "ara_nissl"])); 
+ip.addOptional('type', 'average_template', @(x) ismember(x, ["annotation", "average_template", "ara_nissl"]));
 ip.addParameter('resolution', 100, @(x) ismember(x, [10 25 50 100]));
 ip.addParameter('cmap', gray);
 ip.addParameter('clims', []);
@@ -19,9 +19,10 @@ ip.addOptional('d', 0.2);
 ip.addOptional('c', 0.3);
 ip.addOptional('s', 0.7);
 ip.addOptional('t', 0.4);
-ip.addOptional('lineOptions', {'LineWidth', 1, 'Color', int2color(3)}); 
+ip.addOptional('lineOptions', {'LineWidth', 1, 'Color', int2color(3)});
 
-ip.addParameter('Parent', []); 
+ip.addParameter('Parent', []);
+ip.addParameter('add', 'none', @(x) ismember(x, ["none", "surface", "slices"]));
 
 % Parse
 ip.parse(varargin{:}); % most arguments are only used once/passed on
@@ -30,14 +31,14 @@ ip.parse(varargin{:}); % most arguments are only used once/passed on
 V = getAllenTemplate(ip.Results.type, ip.Results.resolution);
 
 % TODO : Apply mask
-% mask = ip.Results.mask; 
+% mask = ip.Results.mask;
 % if isa(mask, 'function_handle'); mask = mask(V); end
 
 % Convert to true colour
-V = data2rgb(double(V), ip.Results.cmap, ip.Results.clims); 
+V = data2rgb(double(V), ip.Results.cmap, ip.Results.clims);
 
 % Plot
-out = layoutCcfAnnotations(V, ip.Results); 
+[fig, tl, ax] = layoutCcfAnnotations(V, ip.Results);
 
 
 end
