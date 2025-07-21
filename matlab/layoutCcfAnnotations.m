@@ -27,7 +27,6 @@ ip.addParameter('patchOptions', {'FaceColor', 'interp', 'EdgeColor', 'none'});
 ip.addParameter('add', 'none', @(x) ismember(x, ["none","surface","slices"]));
 
 
-
 %% Parse/clean inputs
 ip.parse(varargin{:}); % most arguments are only used once/passed on
 V     = double(V);
@@ -57,7 +56,7 @@ end
 
 
 %% Plot slices
-ax(1) = nexttile(tl, 1,    [ 80 114]);
+ax    = nexttile(tl, 1,    [ 80 114]);
 ax(2) = nexttile(tl, 115,  [ 80 132]);
 ax(3) = nexttile(tl, 19681,[132 114]);
 ax(4) = nexttile(tl, 19795,[132 132]);
@@ -95,29 +94,31 @@ if ~strcmp(lineOptions{1}, 'none')
     line(ax(3), [max(xlim(ax(3))),xyz(1)+d], [xyz(2),xyz(2)], [xyz(3),xyz(3)], lineOptions{:});
 end
 
+
 %% Plot volume in axis 4 if surface is specified
 if strcmpi(fourth, 'slices')
-    plotCcfAnnotation(V, 'dim', 'c', 'Parent', ax(4), 'slice', c, common{:}); hold(ax(4),'on');
+    plotCcfAnnotation(V, 'dim', 'c', 'Parent', ax(4), 'slice', c, common{:});
+    hold(ax(4),'on');
     plotCcfAnnotation(V, 'dim', 's', 'Parent', ax(4), 'slice', s, common{:});
-    plotCcfAnnotation(V, 'dim', 't', 'Parent', ax(4), 'slice', t, common{:}); axis(ax(4),'on');
-    campos([-90,-90,50]); camup([0 -1 0]);
-    set(gca(), 'Color', [1 1 1]/2);
-    xticks([]); yticks([]); zticks([]);
+    plotCcfAnnotation(V, 'dim', 't', 'Parent', ax(4), 'slice', t, common{:});
+    axis(ax(4),'on', 'equal');
+    campos(ax(4), [-90,-90,50]); camup(ax(4), [0 -1 0]);
+    set(ax(4), 'Color', [1 1 1]/2);
+    xticks(ax(4), []); yticks(ax(4), []); zticks(ax(4), []);
 elseif strcmpi(fourth, 'surface')
     faces = ip.Results.faces;
     verts = ip.Results.vertices;
     data = ip.Results.data;
     assert(~isempty(faces) && ~isempty(verts) && ~isempty(data), ...
-        'If adding surfaces, vertices, faces, and data need to be supplied');
+        'If adding a surface, then `vertices`, `faces`, and `data` need to be supplied');
     patch(ax(4), 'Vertices', verts, 'Faces', faces, 'FaceVertexCData', data, ip.Results.patchOptions{:});
-    campos([-90,-90,50]); camup([0 -1 0]);
-    set(gca(), 'Color', [1 1 1]/2);
-    xticks([]); yticks([]); zticks([]);
+    axis(ax(4), 'on', 'equal');
+    campos(ax(4), [-90,-90,50]); camup(ax(4), [0 -1 0]);
+    set(ax(4), 'Color', [1 1 1]/2);
+    xticks(ax(4), []); yticks(ax(4), []); zticks(ax(4), []);
 elseif strcmpi(fourth, 'none')
     axis(ax(4), 'off');
 end
-
-
 
 
 end

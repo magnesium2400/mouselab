@@ -12,3 +12,10 @@ layoutCcfAnnotations(V, 'Parent', fig, 'resolution', 100, ...
 layoutCcfAnnotations(V, 'resolution', 100, 'd', 1, ...
     'lineOptions', {'LineStyle', ':', 'Color', 'g', 'LineWidth', 3}); 
 colormap('cool'); 
+%% Show surface in fourth quadrant - need to generate surface
+V = maskR(denumber(getAllenTemplate([],100))-1); 
+v = V2v(V, getAllenTform(100), 1); 
+f = alphaShape(v).alphaTriangulation; 
+layoutCcfAnnotations(V, 'add', 'surface', 'vertices', v, 'faces', f, 'data', nonzeros(V)); 
+layoutCcfAnnotations(V, 'add', 'surface', 'vertices', v, 'faces', f, 'data', nonzeros(V), ...
+    'Parent', layoutAllenSlices('add', 'slices')); 
