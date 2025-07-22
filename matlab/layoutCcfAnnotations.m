@@ -116,6 +116,7 @@ elseif strcmpi(fourth, 'surface')
     campos(ax(4), [-90,-90,50]); camup(ax(4), [0 -1 0]);
     set(ax(4), 'Color', [1 1 1]/2);
     xticks(ax(4), []); yticks(ax(4), []); zticks(ax(4), []);
+    clim(ax(4), minmax(data));
 elseif strcmpi(fourth, 'none')
     axis(ax(4), 'off');
 end
