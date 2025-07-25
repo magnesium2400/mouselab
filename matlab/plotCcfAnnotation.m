@@ -1,4 +1,29 @@
 function out = plotCcfAnnotation(V, varargin)
+% plotCcfAnnot - Visualizes a 3D volume with annotations.
+%
+% Syntax:
+%   out = plotCcfAnnot(V, varargin)
+%
+% Inputs:
+%   V       - 3D matrix representing the volume data to be visualized.
+%   varargin - Optional parameters:
+%       'dim'      - Dimension to slice ('c', 's', or 't'). Default is 'c'.
+%       'slice'    - Slice index or fraction of the dimension to visualize. Default is 0.25.
+%       'mask'     - Function handle for masking the data. Default is @logical.
+%       'resolution'- Resolution for the transformation. Default is 100.
+%       'Parent'   - Parent axes for the plot. Default is current axes (gca).
+%
+% Outputs:
+%   out     - Handle to the surface plot object.
+%
+% Description:
+%   This function takes a 3D volume and visualizes a specified slice of it.
+%   The slice can be selected based on the specified dimension and index.
+%   The function also applies a transformation to align the data with a template space.
+%   The resulting plot is a surface plot with customizable options for appearance.
+%
+% Example:
+%   out = plotCcfAnnot(volumeData, 'dim', 's', 'slice', 10);
 
 
 %% Prelims

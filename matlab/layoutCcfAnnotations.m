@@ -1,4 +1,33 @@
 function [fig, tl, ax] = layoutCcfAnnotations(V, varargin)
+% layoutCcfAnnotations - Creates a layout for plotting mouse annotations on a 4D volume.
+%
+% Syntax:
+%   [fig, tl, ax] = layoutCcfAnnotations(V, varargin)
+%
+% Inputs:
+%   V           - A 4D volume array representing the data to be visualized.
+%   varargin    - Optional parameters (name-value pairs) that control the behavior of the function:
+%       'resolution' - Resolution of the plot (default: 100).
+%       'mask'       - A function handle for masking (default: @logical).
+%       'Parent'     - Parent figure or tiled layout for the plot (default: new figure).
+%       'd'          - Offset for line plotting (default: 0.2).
+%       'c'          - Slice index for the first dimension (default: 0.3).
+%       's'          - Slice index for the second dimension (default: 0.7).
+%       't'          - Slice index for the third dimension (default: 0.4).
+%       'lineOptions' - Options for line plotting (default: {'LineWidth', 1, 'Color', int2color(3)}).
+%       'vertices'   - Vertices for surface plotting (default: []).
+%       'faces'      - Faces for surface plotting (default: []).
+%       'data'       - Data for surface color mapping (default: []).
+%       'patchOptions' - Options for patch plotting (default: {'FaceColor', 'interp', 'EdgeColor', 'none'}).
+%       'add'        - Specifies additional plotting options ('none', 'surface', 'slices'; default: 'none').
+%
+% Outputs:
+%   fig         - Handle to the figure created or used.
+%   tl          - Handle to the tiled layout used for plotting.
+%   ax          - Array of axes handles for the plotted slices and surfaces.
+%
+% Example:
+%   [fig, tl, ax] = layoutCcfAnnotations(volumeData, 'resolution', 50, 'add', 'surface');
 
 % all this needs to do is convert the volume to a true colour image and
 % then call `plotMouseAnnotation`. the true colour image will be a 4D image
