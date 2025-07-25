@@ -1,3 +1,28 @@
+%% Documentation for plotAllenSlice function
+% This function generates a slice plot of the Allen Brain Atlas.
+%
+% Syntax:
+%   plotAllenSlice()
+%   plotAllenSlice('PropertyName', PropertyValue, ...)
+%
+% Description:
+%   The plotAllenSlice function visualizes different dimensions of the Allen Brain Atlas.
+%   It allows for customization of the slice dimension, resolution, and color mapping.
+%
+% Inputs:
+%   'dim'       - (string) Dimension to visualize. Options are 'c' (coronal), 's' (sagittal), 't' (transverse).
+%   'slice'     - (numeric) The specific slice to display.
+%   'resolution' - (numeric) The resolution of the plot.
+%   'annotation' - (string) Additional annotation options, such as 'cmap' for color mapping.
+%
+% Outputs:
+%   A graphical representation of the specified slice from the Allen Brain Atlas.
+%
+% Example:
+%   plotAllenSlice('dim', 'c', 'slice', 0.3, 'resolution', 50);
+%
+% See also: videofigs, tiledlayout
+
 %% Simple examples
 figure; plotAllenSlice(); 
 figure; plotAllenSlice('dim', 'c', 'slice', 0.3, 'resolution', 50);

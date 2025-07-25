@@ -1,3 +1,24 @@
+%% Documentation
+% This script visualizes the Allen Brain Atlas data using various layouts and annotations.
+% 
+% The main steps involved are:
+% 1. Load the Allen template and preprocess the data.
+% 2. Visualize the volume data using different layouts.
+% 3. Demonstrate the visualization with annotations at various resolutions.
+% 4. Generate and display a surface representation of the data.
+% 
+% Functions used:
+% - getAllenTemplate: Retrieves the Allen Brain Atlas template.
+% - maskR: Applies a mask to the data.
+% - plotVolume: Plots the 3D volume of the data.
+% - layoutCcfAnnotations: Adds annotations to the layout.
+% - layoutAllenSlices: Creates a layout for Allen slices.
+% - V2v: Converts volume data to vertex data for surface representation.
+% - alphaShape: Generates a surface from vertex data.
+% 
+% The script is designed to provide a comprehensive visualization of the brain atlas,
+% allowing for exploration of anatomical structures at different resolutions.
+
 V = maskR(denumber(getAllenTemplate())-1); 
 figure; plotVolume(V); 
 %% Simple demo

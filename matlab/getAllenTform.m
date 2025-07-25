@@ -1,4 +1,21 @@
 function out = getAllenTform(resolution)
+% This function computes the transformation matrix for converting voxel coordinates
+% from the Allen Brain Atlas (ABA) space to the specified resolution. The output
+% transformation matrix is used to align and shift the coordinates appropriately 
+% based on the given resolution. The function supports two coordinate systems: 
+% RAS (Right-Anterior-Superior) and PIR (Postero-Inferior-Rostral).
+%
+% Inputs:
+%   resolution - A scalar value representing the desired resolution in micrometers.
+%
+% Outputs:
+%   out - A 4x4 transformation matrix that includes a scaling factor based on the 
+%         resolution and a translation vector that shifts the origin to the 
+%         specified coordinates in the PIR system.
+%
+% Example usage:
+%   tform = getAllenTform(25);
+%   % This will return the transformation matrix for a resolution of 25 micrometers.
 
 % scale is dependent on resolution; subsequent shift is not
 

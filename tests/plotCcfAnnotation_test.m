@@ -1,3 +1,65 @@
+%% Documentation Generation
+% This section generates documentation for the functions used in the code.
+% The documentation includes descriptions of the functions, their inputs, 
+% outputs, and examples of usage.
+
+% Function: getAllenTemplate
+% Description: Retrieves volumetric data from the Allen Brain Atlas.
+% Inputs:
+%   - type: The type of data to retrieve (e.g., 'annotation', 'ara_nissl').
+%   - resolution: The resolution of the data.
+% Outputs:
+%   - V: The volumetric data array.
+
+% Function: denumber
+% Description: Converts numerical data to a specific format.
+% Inputs:
+%   - data: The input data to be converted.
+% Outputs:
+%   - convertedData: The formatted output data.
+
+% Function: plotCcfAnnotation
+% Description: Plots the CCF (Common Coordinate Framework) annotations.
+% Inputs:
+%   - V: The volumetric data.
+%   - varargin: Additional parameters for customization (e.g., 'slice', 'dim').
+% Outputs:
+%   - None (plots directly to the current figure).
+
+% Function: videofigs
+% Description: Creates a video figure for interactive visualization.
+% Inputs:
+%   - figNum: The figure number.
+%   - func1, func2, ...: Functions to be executed for each frame.
+% Outputs:
+%   - None (creates an interactive video figure).
+
+% Function: plotAllenSlice
+% Description: Plots a slice of the Allen Brain Atlas data.
+% Inputs:
+%   - dim: The dimension to slice ('c', 't', or 's').
+%   - slice: The specific slice number.
+%   - resolution: The resolution of the data.
+% Outputs:
+%   - None (plots directly to the current figure).
+
+% Function: getAllenStructure
+% Description: Retrieves structural data from the Allen Brain Atlas.
+% Inputs:
+%   - structureId: The ID of the structure to retrieve.
+%   - resolution: The resolution of the data.
+% Outputs:
+%   - V: The structural data array.
+
+% Function: getAllenRMask
+% Description: Retrieves the region mask for the specified resolution.
+% Inputs:
+%   - resolution: The resolution of the mask.
+% Outputs:
+%   - mask: The region mask array.
+
+% Note: Ensure that all functions are properly documented in their respective files.
+
 %% Comparison to ground truth
 V = rand(4,4,4); 
 figure; 
