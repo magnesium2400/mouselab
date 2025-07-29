@@ -18,6 +18,7 @@ ip.addOptional('d', 0.2);
 ip.addOptional('c', 0.3);
 ip.addOptional('s', 0.7);
 ip.addOptional('t', 0.4);
+ip.addOptional('roundResolution', 1); 
 ip.addOptional('lineOptions', {'LineWidth', 1, 'Color', int2color(3)});
 
 ip.addParameter('vertices', []);
@@ -61,17 +62,10 @@ ax(2) = nexttile(tl, 115,  [ 80 132]);
 ax(3) = nexttile(tl, 19681,[132 114]);
 ax(4) = nexttile(tl, 19795,[132 132]);
 
-c     = ip.Results.c;
-s     = ip.Results.s;
-t     = ip.Results.t;
-if c<1; c = ceil(size(V,1)*c); end
-if t<1; t = ceil(size(V,2)*t); end
-if s<1; s = ceil(size(V,3)*s); end
-
-common = {'resolution', res, 'mask', ip.Results.mask};
-plotCcfAnnotation(V, 'dim', 'c', 'Parent', ax(1), 'slice', c, common{:});
-plotCcfAnnotation(V, 'dim', 's', 'Parent', ax(2), 'slice', s, common{:});
-plotCcfAnnotation(V, 'dim', 't', 'Parent', ax(3), 'slice', t, common{:});
+common = {'resolution', res, 'roundResolution', ip.Results.roundResolution, 'mask', ip.Results.mask};
+[~,~,c] = plotCcfAnnotation(V, 'dim', 'c', 'Parent', ax(1), 'slice', ip.Results.c, common{:});
+[~,~,s] = plotCcfAnnotation(V, 'dim', 's', 'Parent', ax(2), 'slice', ip.Results.s, common{:});
+[~,~,t] = plotCcfAnnotation(V, 'dim', 't', 'Parent', ax(3), 'slice', ip.Results.t, common{:});
 
 
 %% Plot lines

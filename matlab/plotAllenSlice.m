@@ -13,12 +13,13 @@ ip.addOptional('type', 'average_template', @(x) ismember(x, ["annotation", "aver
 ip.addOptional('dim', 'c', @(x) ismember(x,["c","s","t"]));
 ip.addOptional('slice', 0.25);
 
+ip.addParameter('roundResolution', 1); 
 ip.addParameter('resolution', 100, @(x) ismember(x, [10 25 50 100]));
 ip.addParameter('cmap', gray);
 ip.addParameter('clims', []);
 ip.addParameter('mask', @(x) true(size(x)));
 
-ip.addParameter('Parent', []); 
+ip.addParameter('Parent', gca); 
 
 % Parse
 ip.parse(varargin{:}); % most arguments are only used once/passed on
@@ -43,7 +44,8 @@ Vc = data2rgb(V, ip.Results.cmap, ip.Results.clims);
 
 out = plotCcfAnnotation(Vc, ...
     'dim', ip.Results.dim, 'slice', ip.Results.slice, ...
-    'mask', ip.Results.mask, 'resolution', res, 'Parent', ip.Results.Parent); 
+    'mask', ip.Results.mask, 'Parent', ip.Results.Parent, ...
+    'resolution', res, 'roundResolution', ip.Results.roundResolution); 
 
 
 end

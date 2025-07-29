@@ -19,6 +19,7 @@ ip.addOptional('d', 0.2);
 ip.addOptional('c', 0.3);
 ip.addOptional('s', 0.7);
 ip.addOptional('t', 0.4);
+ip.addOptional('roundResolution', 1); 
 ip.addOptional('lineOptions', {'LineWidth', 1, 'Color', int2color(3)});
 
 ip.addParameter('Parent', []);

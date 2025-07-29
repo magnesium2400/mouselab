@@ -5,7 +5,10 @@ layoutCcfAnnotations(V);
 %% Demo with anatomy
 fig = layoutAllenSlices(); layoutCcfAnnotations(V, 'Parent', fig); 
 %% Demo with anatomy @ different resolution
-fig = layoutAllenSlices('resolution', 25, 'c', 157, 't', 157, 's', 317); 
+fig = layoutAllenSlices('resolution', 50, 'round', 100/50); 
+layoutCcfAnnotations(V, 'Parent', fig, 'resolution', 100); 
+%% Demo with anatomy @ different resolution
+fig = layoutAllenSlices('resolution', 50, 'c', 79, 't', 79, 's', 159); 
 layoutCcfAnnotations(V, 'Parent', fig, 'resolution', 100, ...
     'c', 40, 't', 40, 's', 80); 
 %% Demo with params changed

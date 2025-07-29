@@ -8,7 +8,6 @@ nexttile; plotAllenSlice('dim', 's');
 nexttile; plotAllenSlice('dim', 't'); 
 %% Different resolutions
 figure; 
-nexttile; plotAllenSlice('dim', 'c', 'slice', 0.3, 'resolution',  25); 
 nexttile; plotAllenSlice('dim', 'c', 'slice', 0.3, 'resolution',  50); 
 nexttile; plotAllenSlice('dim', 'c', 'slice', 0.3, 'resolution', 100); 
 %% Different directions
@@ -22,7 +21,7 @@ hold on; plotAllenSlice('dim', 't', 'slice', 0.7, 'resolution',  50);
 hold on; plotAllenSlice('dim', 's', 'slice', 0.3, 'resolution',  50); 
 view(3); 
 %% Different views combined
-figure;  plotAllenSlice('dim', 'c', 'slice', 0.7, 'resolution',  25); 
+figure;  plotAllenSlice('dim', 'c', 'slice', 0.7, 'resolution',  50); 
 hold on; plotAllenSlice('dim', 't', 'slice', 0.7, 'resolution', 100); 
 hold on; plotAllenSlice('dim', 's', 'slice', 0.3, 'resolution',  50); 
 view(3); 
@@ -34,5 +33,5 @@ nexttile; plotAllenSlice('average_template');
 %% Interactive
 videofigs(132, @(n) plotAllenSlice('dim', 'c', 'slice', n, 'resolution', 100));
 videofigs(228, @(n) plotAllenSlice('dim', 's', 'slice', n, 'resolution', 50));
-videofigs(320, @(n) plotAllenSlice('dim', 't', 'slice', n, 'resolution', 25));
+videofigs(320, @(n) plotAllenSlice('dim', 't', 'slice', n, 'resolution', 50));
 
