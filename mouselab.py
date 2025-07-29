@@ -22,9 +22,10 @@ def download_common_data():
     voxel_array, source_mask, target_mask = cache.get_voxel_connectivity_array()
     print('Downloaded connectome data')
 
-    print('Saving one small example connectome')
+    print('Saving small example connectomes')
+    save_connectome(184, 184, 2, 2)
     save_connectome(184, 184, 2, 3)
-    print('Saved connectome')
+    print('Saved connectomes')
 
 def download_structure_mask(structure_id=8, resolution=100):
     mcc = MouseConnectivityCache(resolution=resolution, manifest_file=_get_mouselab_dir()/'manifest.json')

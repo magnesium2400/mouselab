@@ -6,7 +6,7 @@
   - This will install both `allensdk` (needed for doanloading volumetric masks at various resolutions) and `mcmodels` (for accessing the actual connectomic data). 
   - `allensdk` documentation can be found [here](https://allensdk.readthedocs.io/en/latest/) and code [here](https://github.com/AllenInstitute/AllenSDK)
   - `mcmodels` documentation can be found [here](https://mouse-connectivity-models.readthedocs.io/en/latest/index.html) and code [here](https://github.com/AllenInstitute/mouse_connectivity_models)
-- Open the `conda` environment and run `import mouselab; mouselab.download_common_data` (this should run without any errors).
+- Open the `conda` environment and run `import mouselab; mouselab.download_common_data()` (this should run without any errors).
   - This will take ~5 mins but only needs to be done once. It will populate the directories in the repo with the most commonly used AIBS data. 
   - Have a look at `mouselab.py` and the `IPython` notebooks (`masks`, `connectivity`, `structures`) for examples of the (simple) python functionality for downloading the data.
 - Now we can get started doing visualisations in MATLAB! Add the `matlab` and `tests` directories of this repo to your MATLAB path. This repo also requires [nihelp](https://github.com/magnesium2400/nihelp) - please clone/download and add to your MATLAB path.
