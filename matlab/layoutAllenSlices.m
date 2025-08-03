@@ -27,19 +27,22 @@ ip.addParameter('add', 'none', @(x) ismember(x, ["none", "surface", "slices"]));
 
 % Parse
 ip.parse(varargin{:}); % most arguments are only used once/passed on
+ipr = ip.Results; 
 
 % Get volume
-V = getAllenTemplate(ip.Results.type, ip.Results.resolution);
+V = getAllenTemplate(ipr.type, ipr.resolution);
 
-% TODO : Apply mask
-% mask = ip.Results.mask;
-% if isa(mask, 'function_handle'); mask = mask(V); end
+% Apply mask to template and remove from future operations
+ipr.mask = processMask(V, ipr.mask); 
+% V = V.*cast(ipr.mask, 'like', V); 
+% ipr = rmfield(ipr, 'mask'); 
 
 % Convert to true colour
-V = data2rgb(double(V), ip.Results.cmap, ip.Results.clims);
+V = data2rgb(double(V), ipr.cmap, ipr.clims);
+ipr.mask = repmat(ipr.mask, 1, 1, 1, size(V,4)); 
 
 % Plot
-[fig, tl, ax] = layoutCcfAnnotations(V, ip.Results);
+[fig, tl, ax] = layoutCcfAnnotations(V, ipr);
 
 
 end

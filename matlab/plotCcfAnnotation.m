@@ -36,6 +36,11 @@ elseif mod(slice,1); error('slice must be an integer, or a number less than 1');
 cdata = sliceDim(V,dim,slice); % can be true color or scaled color
 cdata = padarray(cdata, [1 1 0], 0, 'post');
 
+% Do the same to mask
+mask = processMask(V, ip.Results.mask); 
+mask = sliceDim(mask,dim,slice);
+mask(:,end+1,:) = mask(:,end,:); 
+mask(end+1,:,:) = mask(end,:,:); 
 
 %% Get coordinates to plot (in voxel space and transform to template)
 [X,Y,Z] = ndgrid(0:size(V,1), 0:size(V,2), 0:size(V,3));
@@ -57,7 +62,7 @@ zdata = reshape(v(:,3), size(zdata));
 
 %% Plot
 out = surfsc(cdata, 'XData', xdata, 'YData', ydata, 'ZData', zdata, 'Parent', ax, ...
-    'mask', ip.Results.mask, 'surfOptions', {'EdgeColor', 'none', 'FaceColor', 'flat'});
+    'mask', mask, 'surfOptions', {'EdgeColor', 'none', 'FaceColor', 'flat'});
 
 
 %% Beautify

@@ -19,7 +19,8 @@ p = fullfile(p, s);
 
 if ~exist(p, 'file')
     warning("Template data not detected. Considering downloading from \n" + ...
-        "https://download.alleninstitute.org/informatics-archive/current-release/mouse_ccf/ and adding to %s", p);
+        "https://download.alleninstitute.org/informatics-archive/current-release/mouse_ccf/%s \n" + ...
+        "and adding to %s", s, p);
 end
 
 end
