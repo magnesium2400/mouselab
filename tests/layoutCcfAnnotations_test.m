@@ -23,7 +23,7 @@ layoutCcfAnnotations(V, 'add', 'surface', 'vertices', v, 'faces', f, 'data', non
 layoutCcfAnnotations(V, 'add', 'surface', 'vertices', v, 'faces', f, 'data', nonzeros(V), ...
     'Parent', layoutAllenSlices('add', 'slices'));
 %% Example with background set to white
-mask = getAllenStructure(997,25,3);
-fig = layoutAllenSlices('mask', mask, 'resolution', 25, 'round', 4);
+mask = getAllenStructure(997,50,3);
+fig = layoutAllenSlices('mask', mask, 'resolution', 50, 'round', 2);
 layoutCcfAnnotations(V, 'Parent', fig, 'resolution', 100);
 set(fig, 'Color', 'white');

@@ -5,8 +5,11 @@ function [W,sourceIdx,targetIdx] = importAllenConnectome(sourceId, targetId, sou
     findAllenConnectome(sourceId, targetId, sourceHemi, targetHemi);
 
 %% Get indices for re-ordering
+w = warning('query', 'nihelp:rotateVolume:OddChanges'); 
+warning('off', 'nihelp:rotateVolume:OddChanges'); 
 sourceIdx = unrotateVolumeIdx(sourceMask, 'rip', 'pir'); 
 targetIdx = unrotateVolumeIdx(targetMask, 'rip', 'pir'); 
+warning(w); 
 
 %% Reorder, transpose and output
 W = h5read(filename, '/W'); 
