@@ -15,15 +15,15 @@ ip.addParameter('cmap', gray);
 ip.addParameter('clims', []);
 ip.addParameter('mask', @(x) true(size(x)));
 
-ip.addOptional('d', 0.2);
-ip.addOptional('c', 0.3);
-ip.addOptional('s', 0.7);
-ip.addOptional('t', 0.4);
-ip.addOptional('roundResolution', 1); 
-ip.addOptional('lineOptions', {'LineWidth', 1, 'Color', int2color(3)});
+ip.addParameter('d', 0.2);
+ip.addParameter('c', 0.3);
+ip.addParameter('s', 0.7);
+ip.addParameter('t', 0.4);
+ip.addParameter('roundResolution', 1); 
+ip.addParameter('lineOptions', {'LineWidth', 1, 'Color', int2color(3)});
 
 ip.addParameter('Parent', []);
-ip.addOptional('figureOptions', {'Color', 'k', 'Position', [100 100 1230 1060]}); 
+ip.addParameter('figureOptions', {'Color', 'k', 'Position', [100 100 1230 1060]}); 
 ip.addParameter('add', 'none', @(x) ismember(x, ["none", "surface", "slices"]));
 
 % Parse

@@ -14,19 +14,19 @@ ip.addParameter('resolution', 100, @(x) ismember(x, [10 25 50 100]));
 ip.addParameter('mask', @logical);
 ip.addParameter('Parent', []);
 
-ip.addOptional('d', 0.2);
-ip.addOptional('c', 0.3);
-ip.addOptional('s', 0.7);
-ip.addOptional('t', 0.4);
-ip.addOptional('roundResolution', 1); 
-ip.addOptional('lineOptions', {'LineWidth', 1, 'Color', int2color(3)});
-ip.addOptional('figureOptions', {'Color', 'k', 'Position', [100 100 1230 1060]}); 
+ip.addParameter('d', 0.2);
+ip.addParameter('c', 0.3);
+ip.addParameter('s', 0.7);
+ip.addParameter('t', 0.4);
+ip.addParameter('roundResolution', 1);
+ip.addParameter('lineOptions', {'LineWidth', 1, 'Color', int2color(3)});
+ip.addParameter('figureOptions', {'Color', 'k', 'Position', [100 100 1230 1060]});
 
 ip.addParameter('vertices', []);
 ip.addParameter('faces', []);
 ip.addParameter('data', []);
 ip.addParameter('patchOptions', {'FaceColor', 'interp', 'EdgeColor', 'none'});
-ip.addParameter('add', 'none', @(x) ismember(x, ["none","surface","slices"]));
+ip.addParameter('add', 'none', @(x) ismember(x, ["none","surface","slices","volume"]));
 
 
 %% Parse/clean inputs
@@ -37,6 +37,7 @@ d     = ip.Results.d;
 par   = ip.Results.Parent;
 lineOptions = ip.Results.lineOptions;
 fourth= ip.Results.add;
+mask  = processMask(V, ip.Results.mask); 
 
 isfig = @(x) strcmp(get(x, 'type'), 'figure');
 istl =  @(x) strcmp(get(x, 'type'), 'tiledlayout');
@@ -52,7 +53,7 @@ elseif istl(par)
     fig = tl.Parent;
     if ~isfig(fig); error("If parent is a tiledlayout, its parent must be a figure."); end
 else
-    fig = figure(ip.Results.figureOptions{:}); 
+    fig = figure(ip.Results.figureOptions{:});
     tl = tiledlayout(212,246,'TileSpacing','none','Position',[0 0 1 1]);
 end
 
@@ -63,7 +64,7 @@ ax(2) = nexttile(tl, 115,  [ 80 132]);
 ax(3) = nexttile(tl, 19681,[132 114]);
 ax(4) = nexttile(tl, 19795,[132 132]);
 
-common = {'resolution', res, 'roundResolution', ip.Results.roundResolution, 'mask', ip.Results.mask};
+common = {'resolution', res, 'roundResolution', ip.Results.roundResolution, 'mask', mask};
 [~,~,c] = plotCcfAnnotation(V, 'dim', 'c', 'Parent', ax(1), 'slice', ip.Results.c, common{:});
 [~,~,s] = plotCcfAnnotation(V, 'dim', 's', 'Parent', ax(2), 'slice', ip.Results.s, common{:});
 [~,~,t] = plotCcfAnnotation(V, 'dim', 't', 'Parent', ax(3), 'slice', ip.Results.t, common{:});
@@ -107,6 +108,15 @@ elseif strcmpi(fourth, 'surface')
     assert(~isempty(faces) && ~isempty(verts) && ~isempty(data), ...
         'If adding a surface, then `vertices`, `faces`, and `data` need to be supplied');
     patch(ax(4), 'Vertices', verts, 'Faces', faces, 'FaceVertexCData', data, ip.Results.patchOptions{:});
+    axis(ax(4), 'on', 'equal');
+    campos(ax(4), [-90,-90,50]); camup(ax(4), [0 -1 0]);
+    set(ax(4), 'Color', [1 1 1]/2);
+    xticks(ax(4), []); yticks(ax(4), []); zticks(ax(4), []);
+    clim(ax(4), minmax(data));
+elseif strcmpi(fourth, 'volume')
+    verts = V2v(V,getAllenTform(res),1,ip.Results.mask); 
+    data = V(mask); 
+    scatter3(verts(:,1), verts(:,2), verts(:,3), 1, data, 'filled');
     axis(ax(4), 'on', 'equal');
     campos(ax(4), [-90,-90,50]); camup(ax(4), [0 -1 0]);
     set(ax(4), 'Color', [1 1 1]/2);
