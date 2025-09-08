@@ -1,5 +1,6 @@
 # `mouselab` - package for interacting with Allen Mouse Brain Connectivity Data with MATLAB
 
+
 ## I want to get started!
 - Clone/download this directory
 - Install the python environment using `conda` and `environment.yaml`
@@ -66,22 +67,23 @@
   - 73: Ventricular system
 
 
-## Python Information
+## Usage/examples
+- Currently, downloading data is done in python. Visualisation is done in MATLAB.
+- The python functionality is in `mouselab.py`. The MATLAB functionality is in the `matlab` directory.
+- The `tests` directory contains some simple tests/examples of the functionality. Also see the `EXAMPLES.mlx` live script.
+
+### Python Information
 - For a gentle introduction to the Allen API, explore the notebooks in the following order: 
   1. `structures.ipynb`
   2. `masks.ipynb`
   3. `connectivity.ipynb`
+- The main functions for downloading data are in `mouselab.py`. The main functions are `save_connectome`, `download_structure_mask`, `download_structure_set`, and `structure_set_info_to_json`. Run these functions from a python environment where the `mouselab` package is available in order to get the data you need from AIBS. 
+- You can then load the data into MATLAB for visualisation (see below).
 
-
-## MATLAB Information
-
-
-
-
-
-
-
-
-
-
+### MATLAB Information
+- See the live script `EXAMPLES.mlx` for a gentle introduction to the MATLAB functionality.
+- The main functions for getting structure/templates volumes are `getAllenTemplate`, `getAllenStructure`, `getAllenSet`.
+- The main functions for visualisation are `plotAllenSlice`, `layoutAllenSlices`, `plotCcfAnnotation`, and `layoutCcfAnnotations`.
+- The main function for getting connectomic data is `importtAllenConnectome`.
+- Some other useful functions are `getAllen?Mask`, `downsampleAllenVolume` and `getAllenTform`.
 
