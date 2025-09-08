@@ -20,6 +20,7 @@ ip.addOptional('s', 0.7);
 ip.addOptional('t', 0.4);
 ip.addOptional('roundResolution', 1); 
 ip.addOptional('lineOptions', {'LineWidth', 1, 'Color', int2color(3)});
+ip.addOptional('figureOptions', {'Color', 'k', 'Position', [100 100 1230 1060]}); 
 
 ip.addParameter('vertices', []);
 ip.addParameter('faces', []);
@@ -51,7 +52,7 @@ elseif istl(par)
     fig = tl.Parent;
     if ~isfig(fig); error("If parent is a tiledlayout, its parent must be a figure."); end
 else
-    fig = figure('Color', 'k'); scfw(1230); scfh(1060);
+    fig = figure(ip.Results.figureOptions{:}); 
     tl = tiledlayout(212,246,'TileSpacing','none','Position',[0 0 1 1]);
 end
 

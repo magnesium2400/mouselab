@@ -1,5 +1,5 @@
 %%% Shared variables
-V = double(getAllenStructure(315)).*(denumber(getAllenTemplate())-1);
+V = double(getAllenStructure(315)).*double(denumber(getAllenTemplate())-1);
 doPlot = false; %#ok<*UNRCH>
 assert(nnz(V)==123245)
 if doPlot; figure; nexttile; plotVolume(V); end

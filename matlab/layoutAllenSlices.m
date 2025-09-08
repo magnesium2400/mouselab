@@ -23,6 +23,7 @@ ip.addOptional('roundResolution', 1);
 ip.addOptional('lineOptions', {'LineWidth', 1, 'Color', int2color(3)});
 
 ip.addParameter('Parent', []);
+ip.addOptional('figureOptions', {'Color', 'k', 'Position', [100 100 1230 1060]}); 
 ip.addParameter('add', 'none', @(x) ismember(x, ["none", "surface", "slices"]));
 
 % Parse

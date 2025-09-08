@@ -23,6 +23,7 @@ V = double(getAllenStructure(id, res))*id;
 for ii = 2:height(dataInfoTable)
     id = dataInfoTable{ii,'id'}; 
     V2 = getAllenStructure(id,res); 
+    if any(V(logical(V2))); warning("Structures are overlapping"); end
     V(logical(V2)) = id; 
 end
 
